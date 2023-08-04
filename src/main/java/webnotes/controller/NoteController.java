@@ -13,7 +13,7 @@ import webnotes.model.service.NoteService;
 
 @RequiredArgsConstructor
 @Controller
-@RequestMapping("/note")
+@RequestMapping(value = {"/note", "/"})
 public class NoteController {
     private final NoteService noteService;
 
@@ -21,6 +21,11 @@ public class NoteController {
     public ModelAndView getListOfNotes() {
         return new ModelAndView("list")
                 .addObject("notes", noteService.listAll());
+    }
+
+    @GetMapping("/")
+    public ModelAndView getListOfNotesFromRoot() {
+        return new ModelAndView("redirect:/note/list");
     }
 
     @PostMapping("/delete")

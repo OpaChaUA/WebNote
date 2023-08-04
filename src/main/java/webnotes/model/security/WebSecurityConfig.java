@@ -30,7 +30,10 @@ public class WebSecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         return http.authorizeHttpRequests(auth -> auth.anyRequest().authenticated())
-                .formLogin(login -> login.permitAll().defaultSuccessUrl("/note/list", true))
+                .formLogin(login -> login
+                        .permitAll()
+                        .defaultSuccessUrl("/note/list", true)
+                        .loginPage("/login"))
                 .logout(LogoutConfigurer::permitAll)
                 .build();
     }
