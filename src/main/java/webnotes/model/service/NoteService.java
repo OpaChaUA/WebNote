@@ -13,11 +13,13 @@ import java.util.NoSuchElementException;
 public class NoteService {
     private final NoteRepository noteRepository;
 
-    public List<Note> listAll() {
-        return (List<Note>) noteRepository.findAll();
+    public List<Note> listAll(int userId) {
+        return noteRepository.findByUserIdOrderByCreatedAtDesc(userId);
     }
 
-    public Note add(Note note) {
+    public Note add(Note note, int userId) {
+        note.setUserId(userId);
+
         return noteRepository.save(note);
     }
 
