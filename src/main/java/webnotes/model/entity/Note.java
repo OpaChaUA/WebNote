@@ -8,6 +8,9 @@ import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Generated;
+
+import java.sql.Timestamp;
 
 @Data
 @AllArgsConstructor
@@ -16,12 +19,22 @@ import lombok.NoArgsConstructor;
 public class Note {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.UUID)
     private long id;
 
     @Column
     private String title;
 
     @Column
+
     private String content;
+    @Column
+    private String access;
+
+    @Column(name = "user_id")
+    private int userId;
+
+    @Generated
+    @Column(name = "created_at")
+    private Timestamp createdAt;
 }
