@@ -29,7 +29,11 @@ public class WebSecurityConfig {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        return http.authorizeHttpRequests(auth -> auth.anyRequest().authenticated())
+        return http.authorizeHttpRequests(auth -> auth
+                        .requestMatchers("/register", "/note/share/{id}", "/static/css/**", "/static/js/**")
+                        .permitAll()
+                        .anyRequest()
+                        .authenticated())
                 .formLogin(login -> login
                         .permitAll()
                         .defaultSuccessUrl("/note/list", true)
