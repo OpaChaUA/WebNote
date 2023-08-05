@@ -127,7 +127,7 @@ function toggleView() {
         cardsView.style.display = "none";
         listView.style.display = "block";
         localStorage.setItem("viewStyle", "list");
-        // Змінюємо іконку на "картки" (fa-th)
+
         var toggleIcon = document.getElementById("toggleIcon");
         toggleIcon.classList.remove("fa-list");
         toggleIcon.classList.add("fa-th");
@@ -135,7 +135,7 @@ function toggleView() {
         cardsView.style.display = "block";
         listView.style.display = "none";
         localStorage.setItem("viewStyle", "cards");
-        // Змінюємо іконку на "список" (fa-list)
+
         var toggleIcon = document.getElementById("toggleIcon");
         toggleIcon.classList.remove("fa-th");
         toggleIcon.classList.add("fa-list");
