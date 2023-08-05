@@ -29,11 +29,14 @@ public class NoteService {
     }
 
     public void update(Note note) {
-        getById(note.getId());
         noteRepository.save(note);
     }
 
     public Optional<Note> getById(String id) {
         return noteRepository.findById(id);
+    }
+
+    public boolean isNoteExist(String id) {
+        return getById(id).isPresent();
     }
 }
