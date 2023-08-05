@@ -47,9 +47,16 @@ public class NoteController {
     }
 
     @GetMapping("/edit")
-    public ModelAndView showEditPage(@RequestParam("id") long id) {
+    public ModelAndView showEditPage(@RequestParam("id") String id, HttpSession session) {
+        Note sessionNote = (Note) session.getAttribute("note");
+        if (sessionNote == null) {
+            Optional<Note> note = noteService.getById(id);
+            return note.map(value -> new ModelAndView("edit")
+                            .addObject("note", value))
+                    .orElseGet(() -> new ModelAndView("redirect:/note/list"));
+        }
         return new ModelAndView("edit")
-                .addObject("note", noteService.getById(id));
+                .addObject("note", sessionNote);
     }
 
     @PostMapping("/edit")

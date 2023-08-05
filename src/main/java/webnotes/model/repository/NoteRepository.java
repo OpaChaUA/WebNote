@@ -7,6 +7,6 @@ import webnotes.model.entity.Note;
 import java.util.List;
 
 @Repository
-public interface NoteRepository extends CrudRepository<Note, Long> {
+public interface NoteRepository extends CrudRepository<Note, String> {
     List<Note> findByUserIdOrderByCreatedAtDesc(int userId);
 }
