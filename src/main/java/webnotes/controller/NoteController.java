@@ -60,9 +60,19 @@ public class NoteController {
     }
 
     @PostMapping("/edit")
-    public ModelAndView editNote(@ModelAttribute Note note)  {
-        noteService.update(note);
-        return new ModelAndView("redirect:/note/list");
+    public ModelAndView editNote(@ModelAttribute Note note, HttpSession session)  {
+        if (!noteService.isNoteExist(note.getId())) {
+            return new ModelAndView("redirect:/note/list");
+        }
+        List<String> errorMessageList = noteValidator.isNoteValid(note);
+        if (errorMessageList.isEmpty()) {
+            noteService.update(note);
+            return new ModelAndView("redirect:/note/list");
+        }
+        session.setAttribute("note", note);
+        return new ModelAndView("error")
+                .addObject("backLink", "/note/edit?id=" + note.getId())
+                .addObject("errMes", errorMessageList);
     }
 
     @GetMapping("/create")
