@@ -7,6 +7,7 @@ import webnotes.model.repository.NoteRepository;
 
 import java.util.List;
 import java.util.NoSuchElementException;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -23,8 +24,8 @@ public class NoteService {
         return noteRepository.save(note);
     }
 
-    public void deleteById(long id) {
-        noteRepository.delete(getById(id));
+    public void deleteById(String id) {
+        getById(id).ifPresent(noteRepository::delete);
     }
 
     public void update(Note note) {
@@ -32,7 +33,7 @@ public class NoteService {
         noteRepository.save(note);
     }
 
-    public Note getById(long id) {
-        return noteRepository.findById(id).orElseThrow(NoSuchElementException::new);
+    public Optional<Note> getById(String id) {
+        return noteRepository.findById(id);
     }
 }
