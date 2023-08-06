@@ -21,6 +21,6 @@ class NoteContentFormatServiceTest {
 
         List<Note> formattedList = testInstance.getFormattedList(notes);
 
-        assertEquals("<p>Contentt</p>\n", formattedList.get(0).getContent());
+        assertEquals("<p>Content</p>\n", formattedList.get(0).getContent());
     }
 }
