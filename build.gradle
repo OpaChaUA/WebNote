@@ -41,7 +41,7 @@ dependencies {
 }
 
 tasks.named("bootJar") {
-	mainClass = 'webnotes.JavaDevTestTeamProjectApplication'
+	mainClass = 'webnotes.JavaDevTeamProjectApplication'
 	destinationDirectory = file("$rootDir/")
 }
 
