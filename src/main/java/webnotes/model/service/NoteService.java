@@ -6,7 +6,6 @@ import webnotes.model.entity.Note;
 import webnotes.model.repository.NoteRepository;
 
 import java.util.List;
-import java.util.NoSuchElementException;
 import java.util.Optional;
 
 @Service
@@ -20,7 +19,6 @@ public class NoteService {
 
     public Note add(Note note, int userId) {
         note.setUserId(userId);
-
         return noteRepository.save(note);
     }
 
