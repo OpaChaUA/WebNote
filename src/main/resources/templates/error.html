@@ -51,8 +51,7 @@
           <hr />
           <div class="alert alert-danger" role="alert">
             <p>
-              Sorry, your input did not pass the validation. Please check the
-              error messages below:
+              Sorry, your input did not pass the validation. Please check the error messages below:
             </p>
             <ul class="error-messages">
               <li th:each="err : ${errMes}" th:text="${err}"></li>
@@ -60,7 +59,7 @@
           </div>
           <span class="custom-primary-button">
             <a th:href="@{${backLink}}" class="btn btn-secondary">Back</a>
-            <a th:href="@{/note/list}" class="btn btn-primary">to List</a>
+            <a th:href="@{/note/list}" class="btn btn-primary">To Notes</a>
           </span>
         </div>
       </div>

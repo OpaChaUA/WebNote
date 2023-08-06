@@ -1,6 +1,6 @@
 CREATE TABLE IF NOT EXISTS users(
     id INTEGER PRIMARY KEY NOT NULL AUTO_INCREMENT,
-    username VARCHAR(50) NOT NULL CHECK (LENGTH(username) >= 4),
+    username VARCHAR(50) NOT NULL CHECK (LENGTH(username) >= 5),
     password VARCHAR(100) NOT NULL CHECK (LENGTH(password) >= 8),
     role VARCHAR(20) NOT NULL,
     enabled INTEGER DEFAULT NULL

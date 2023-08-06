@@ -87,7 +87,7 @@
                   placeholder="Content"
                   onfocus="clearPlaceholder(event)"
                   onblur="restorePlaceholder(event)"
-                  th:utext="${isEmpty ? '' : note.content}"
+                  th:text="${isEmpty ? '' : note.content}"
                 ></textarea>
               </div>
             </div>

@@ -36,8 +36,19 @@ dependencies {
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation 'org.springframework.security:spring-security-test'
+	testImplementation 'org.mockito:mockito-core:5.4.0'
+	testImplementation 'org.mockito:mockito-junit-jupiter:5.4.0'
+}
+
+tasks.named("bootJar") {
+	mainClass = 'webnotes.JavaDevTestTeamProjectApplication'
+	destinationDirectory = file("$rootDir/")
 }
 
 tasks.named('test') {
 	useJUnitPlatform()
+
+	testLogging {
+		events "passed", "skipped", "failed"
+	}
 }
